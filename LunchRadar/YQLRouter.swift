@@ -35,7 +35,7 @@ class YQLRouter: NSObject {
         lastNetworkCallTime = currentTime
         forceUpdate = false
         
-        let term = "select * from local.search where query=\"\(searchTerm)\" and latitude=\"\(coordinates.latitude)\" and longitude=\"\(coordinates.longitude)\"".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let term = "select * from local.search(30) where query=\"\(searchTerm)\" and latitude=\"\(coordinates.latitude)\" and longitude=\"\(coordinates.longitude)\"".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         
         let query = "\(prefix)\(term)\(suffix)"
         print(query)

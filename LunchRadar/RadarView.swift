@@ -37,10 +37,11 @@ class RadarView: UIView {
         circleColor.setFill()
         circle.fill()
         
-        // Add arrows
+        // MARK: Add arrows
         
         let circleCenter = CGPoint(x: minBoxDimension / 2.0, y: minBoxDimension / 2.0)
         
+        // Reverse so that closest is added last and on top of the others
         let arrowsReverse = arrows.reversed()
         
         for arrow in arrowsReverse {

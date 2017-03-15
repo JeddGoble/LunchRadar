@@ -147,7 +147,7 @@ extension ViewController: UITableViewDataSource {
         var displayedText = ""
         
         if let distance = arrow.distance {
-            displayedText += "\(distance.metersToMiles)"
+            displayedText += "\(distance.metersToMiles) miles"
         }
         
         if let restaurantName = arrow.title {
