@@ -72,7 +72,7 @@ extension ViewController: LocationDelegate {
         arrows = arrows.map { (arrow) -> Arrow in
             
             if let bearing = arrow.bearing {
-                let relativeDirection = -(heading - bearing) - 40.0 // Note: Requires offset due to magnetic North (?). FIX if used in other locales
+                let relativeDirection = -(heading - bearing) - 90.0 // Note: This is super buggy indoors. Optomizing for outside.
                 return Arrow(location: arrow.location, bearing: bearing, relativeDirection: relativeDirection, distance: arrow.distance, color: arrow.color, title: arrow.title)
             } else {
                 return arrow
