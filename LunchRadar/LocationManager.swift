@@ -9,7 +9,7 @@
 import CoreLocation
 
 protocol LocationDelegate {
-    func didUpdateCoordinates(_ coordinates: CLLocationCoordinate2D)
+    func didUpdateLocation(_ location: CLLocation)
     func didUpdateHeading(_ heading: Double)
 }
 
@@ -45,7 +45,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             return
         }
         currentLocation = location
-        delegate?.didUpdateCoordinates(location.coordinate)
+        delegate?.didUpdateLocation(location)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {

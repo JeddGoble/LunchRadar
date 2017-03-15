@@ -52,9 +52,19 @@ class ViewController: UIViewController {
 
 extension ViewController: LocationDelegate {
     
-    func didUpdateCoordinates(_ coordinates: CLLocationCoordinate2D) {
+    func didUpdateLocation(_ currentLocation: CLLocation) {
         
-        yqlRouter.queryRestaurants(forCoordinates: coordinates)
+        arrows = arrows.map({ (arrow) -> Arrow in
+            if let restaurantLocation = arrow.location {
+                let newBearing = self.locationManager.getBearingBetweenTwoPoints(currentLocation: currentLocation, destination: restaurantLocation)
+                let newArrow = Arrow(location: arrow.location, bearing: newBearing, relativeDirection: arrow.relativeDirection, distance: arrow.distance, color: arrow.color, title: arrow.title)
+                return newArrow
+            }
+            return arrow
+        })
+        
+        // Note: YQLRouter will refuse to make a network call unless 10 seconds has elapsed.
+        yqlRouter.queryRestaurants(forCoordinates: currentLocation.coordinate)
     }
     
     func didUpdateHeading(_ heading: Double) {
@@ -62,8 +72,8 @@ extension ViewController: LocationDelegate {
         arrows = arrows.map { (arrow) -> Arrow in
             
             if let bearing = arrow.bearing {
-                let relativeDirection = -(heading - bearing) - 50.0 // Note: Requires offset due to magnetic North (?). FIX if used in other locales
-                return Arrow(bearing: bearing, relativeDirection: relativeDirection, distance: arrow.distance, color: arrow.color, title: arrow.title)
+                let relativeDirection = -(heading - bearing) - 40.0 // Note: Requires offset due to magnetic North (?). FIX if used in other locales
+                return Arrow(location: arrow.location, bearing: bearing, relativeDirection: relativeDirection, distance: arrow.distance, color: arrow.color, title: arrow.title)
             } else {
                 return arrow
             }
@@ -96,6 +106,7 @@ extension ViewController: YQLDelegate {
             
             var newArrow = Arrow()
             
+            newArrow.location = restaurant.location
             newArrow.bearing = locationManager.getBearingBetweenTwoPoints(currentLocation: currentLocation, destination: location)
             newArrow.distance = location.distance(from: currentLocation)
             newArrow.title = restaurant.title
@@ -129,7 +140,7 @@ extension ViewController: YQLDelegate {
                 break
             }
             
-            let newArrow = Arrow(bearing: arrow.bearing, relativeDirection: arrow.relativeDirection, distance: arrow.distance, color: color, title: arrow.title)
+            let newArrow = Arrow(location: arrow.location, bearing: arrow.bearing, relativeDirection: arrow.relativeDirection, distance: arrow.distance, color: color, title: arrow.title)
             arrows.append(newArrow)
         }
         

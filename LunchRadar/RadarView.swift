@@ -18,10 +18,10 @@ class RadarView: UIView {
         }
     }
     
-    var circleSizeFactor: CGFloat = 0.4
-    var arrowSizeFactor: CGFloat = 0.75
+    var circleSizeFactor: CGFloat = 0.35
+    var arrowSizeFactor: CGFloat = 1.4
     
-    var circleColor: UIColor = UIColor(colorLiteralRed: 0.9, green: 0.9, blue: 0.9, alpha: 0.1)
+    var circleColor: UIColor = UIColor.clear
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)

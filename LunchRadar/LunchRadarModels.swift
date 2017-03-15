@@ -11,6 +11,7 @@ import UIKit
 
 struct Arrow: Hashable, Equatable, Comparable {
     
+    var location: CLLocation?
     var bearing: Double? // In degrees
     var relativeDirection: Double? // In degrees
     var distance: Double? // In miles
@@ -54,15 +55,15 @@ enum ArrowColor {
     var colorValue: UIColor {
         switch self {
         case .arrowZero:
-            return UIColor(colorLiteralRed: 103.0 / 255.0, green: 152.0 / 255.0, blue: 69.0 / 255.0, alpha: 1.0)
+            return UIColor(colorLiteralRed: 103.0 / 255.0, green: 152.0 / 255.0, blue: 69.0 / 255.0, alpha: 0.7)
         case .arrowOne:
-            return UIColor(colorLiteralRed: 148.0 / 255.0, green: 165.0 / 255.0, blue: 75.0 / 255.0, alpha: 1.0)
+            return UIColor(colorLiteralRed: 207.0 / 255.0, green: 180.0 / 255.0, blue: 52.0 / 255.0, alpha: 0.7)
         case .arrowTwo:
-            return UIColor(colorLiteralRed: 53.0 / 255.0, green: 116.0 / 255.0, blue: 92.0 / 255.0, alpha: 1.0)
+            return UIColor(colorLiteralRed: 55.0 / 255.0, green: 90.0 / 255.0, blue: 123.0 / 255.0, alpha: 0.7)
         case .arrowThree:
-            return UIColor(colorLiteralRed: 156.0 / 255.0, green: 71.0 / 255.0, blue: 94.0 / 255.0, alpha: 1.0)
+            return UIColor(colorLiteralRed: 156.0 / 255.0, green: 71.0 / 255.0, blue: 94.0 / 255.0, alpha: 0.7)
         case .arrowFour:
-            return UIColor(colorLiteralRed: 172.0 / 255.0, green: 107.0 / 255.0, blue: 78.0 / 255.0, alpha: 1.0)
+            return UIColor(colorLiteralRed: 190.0 / 255.0, green: 115.0 / 255.0, blue: 59.0 / 255.0, alpha: 0.7)
         }
     }
 }
