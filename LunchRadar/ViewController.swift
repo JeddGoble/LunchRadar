@@ -26,6 +26,8 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var reloadButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +37,17 @@ class ViewController: UIViewController {
         locationManager.delegate = self
         locationManager.requestAuthorization()
         locationManager.startUpdating()
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
     }
+    
+    @IBAction func onReloadButtonTapped(_ sender: UIButton) {
+        reloadButton.isHidden = true
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        yqlRouter.forceUpdate = true
+    }
+    
 }
 
 extension ViewController: LocationDelegate {
@@ -50,14 +62,18 @@ extension ViewController: LocationDelegate {
         arrows = arrows.map { (arrow) -> Arrow in
             
             if let bearing = arrow.bearing {
-                let newBearing = heading - bearing
-                return Arrow(bearing: newBearing, distance: arrow.distance, color: arrow.color, title: arrow.title)
+                let relativeDirection = -(heading - bearing) - 50.0 // Note: Requires offset due to magnetic North (?). FIX if used in other locales
+                return Arrow(bearing: bearing, relativeDirection: relativeDirection, distance: arrow.distance, color: arrow.color, title: arrow.title)
             } else {
                 return arrow
             }
         }
         
         radarView.arrows = arrows
+        DispatchQueue.main.async { self.legendTableView.reloadData() }
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
+        reloadButton.isHidden = false
     }
 }
 
@@ -113,14 +129,11 @@ extension ViewController: YQLDelegate {
                 break
             }
             
-            let newArrow = Arrow(bearing: arrow.bearing, distance: arrow.distance, color: color, title: arrow.title)
+            let newArrow = Arrow(bearing: arrow.bearing, relativeDirection: arrow.relativeDirection, distance: arrow.distance, color: color, title: arrow.title)
             arrows.append(newArrow)
         }
         
-        radarView.arrows = arrows
         self.arrows = arrows
-        legendTableView.reloadData()
-        DispatchQueue.main.async { self.legendTableView.setNeedsDisplay() }
     }
 }
 

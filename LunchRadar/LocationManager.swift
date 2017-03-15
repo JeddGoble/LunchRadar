@@ -24,6 +24,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         super.init()
         
         locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
     func requestAuthorization() {
@@ -33,8 +34,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     func startUpdating() {
         
-        locationManager.requestLocation()
         locationManager.startUpdatingHeading()
+        locationManager.startUpdatingLocation()
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -50,6 +52,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         
         delegate?.didUpdateHeading(Double(newHeading.trueHeading))
     }
+
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         
@@ -64,12 +67,13 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         let destLat = destination.coordinate.latitude.degreesToRadians
         let destLon = destination.coordinate.longitude.degreesToRadians
         
-        let diffLon = destLon - currentLon
+        let dLon = destLon - currentLon
         
-        let y = sin(diffLon) * cos(destLat)
-        let x = cos(currentLat) * sin(destLat) - sin(currentLat) * cos(destLat) * cos(diffLon)
+        let y = sin(dLon) * cos(destLat)
+        let x = cos(currentLat) * sin(destLat) - sin(currentLat) * cos(destLat) * cos(dLon)
         let bearingInRadians = atan2(y, x)
+        let bearingInDegrees = bearingInRadians.radiansToDegrees
         
-        return bearingInRadians.radiansToDegrees
+        return bearingInDegrees
     }
 }

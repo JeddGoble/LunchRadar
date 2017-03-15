@@ -15,14 +15,25 @@ protocol YQLDelegate {
 class YQLRouter: NSObject {
     
     var delegate: YQLDelegate?
+    var forceUpdate: Bool = true
+    var lastNetworkCallTime = Date().timeIntervalSinceReferenceDate
     
     private let prefix: String = "http://query.yahooapis.com/v1/public/yql?q="
-    
     private let suffix: String = "&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="
-    
     var searchTerm: String = "restaurants"
     
     func queryRestaurants(forCoordinates coordinates: CLLocationCoordinate2D) {
+        
+        let currentTime = Date().timeIntervalSinceReferenceDate
+        let timeElapsed = currentTime - lastNetworkCallTime
+        
+        guard timeElapsed > 10.0 || forceUpdate else {
+            print("Not enough time has elapsed to make another network call")
+            return
+        }
+        
+        lastNetworkCallTime = currentTime
+        forceUpdate = false
         
         let term = "select * from local.search where query=\"\(searchTerm)\" and latitude=\"\(coordinates.latitude)\" and longitude=\"\(coordinates.longitude)\"".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         

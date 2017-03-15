@@ -16,7 +16,6 @@
 		04C7CB681E7603E1003004EB /* LunchRadarModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7CB671E7603E1003004EB /* LunchRadarModels.swift */; };
 		04C7CB6A1E7625A7003004EB /* YQLRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7CB691E7625A7003004EB /* YQLRouter.swift */; };
 		04E30E281E76362E00748689 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E30E271E76362E00748689 /* LocationManager.swift */; };
-		04E30E2A1E79025700748689 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E30E291E79025700748689 /* UIColor+Additions.swift */; };
 		04E30E2D1E7975E600748689 /* LegendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E30E2B1E7975E600748689 /* LegendTableViewCell.swift */; };
 		04E30E2E1E7975E600748689 /* LegendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E30E2C1E7975E600748689 /* LegendTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -33,7 +32,6 @@
 		04C7CB671E7603E1003004EB /* LunchRadarModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LunchRadarModels.swift; sourceTree = "<group>"; };
 		04C7CB691E7625A7003004EB /* YQLRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YQLRouter.swift; sourceTree = "<group>"; };
 		04E30E271E76362E00748689 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		04E30E291E79025700748689 /* UIColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		04E30E2B1E7975E600748689 /* LegendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegendTableViewCell.swift; sourceTree = "<group>"; };
 		04E30E2C1E7975E600748689 /* LegendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LegendTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,7 +78,6 @@
 				04C7CB5A1E760345003004EB /* Assets.xcassets */,
 				04C7CB5C1E760345003004EB /* LaunchScreen.storyboard */,
 				04C7CB5F1E760345003004EB /* Info.plist */,
-				04E30E291E79025700748689 /* UIColor+Additions.swift */,
 			);
 			path = LunchRadar;
 			sourceTree = "<group>";
@@ -166,7 +163,6 @@
 				04C7CB541E760345003004EB /* AppDelegate.swift in Sources */,
 				04C7CB6A1E7625A7003004EB /* YQLRouter.swift in Sources */,
 				04E30E2D1E7975E600748689 /* LegendTableViewCell.swift in Sources */,
-				04E30E2A1E79025700748689 /* UIColor+Additions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

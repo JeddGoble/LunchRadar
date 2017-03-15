@@ -24,43 +24,54 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9f-LQ-NuT" customClass="RadarView" customModule="LunchRadar" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="375"/>
+                                <subviews>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZS-hW-iQ1">
+                                        <rect key="frame" x="157" y="157.5" width="60" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="J83-XZ-Mnd"/>
+                                            <constraint firstAttribute="width" constant="60" id="rEu-kM-av9"/>
+                                        </constraints>
+                                        <state key="normal" image="reload"/>
+                                        <connections>
+                                            <action selector="onReloadButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zuz-5c-409"/>
+                                        </connections>
+                                    </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="w07-ga-INR">
+                                        <rect key="frame" x="177" y="177" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="FZS-hW-iQ1" firstAttribute="centerX" secondItem="A9f-LQ-NuT" secondAttribute="centerX" id="4fB-fH-pMP"/>
+                                    <constraint firstItem="FZS-hW-iQ1" firstAttribute="centerY" secondItem="A9f-LQ-NuT" secondAttribute="centerY" id="9Xi-O9-YMY"/>
+                                    <constraint firstItem="w07-ga-INR" firstAttribute="centerY" secondItem="A9f-LQ-NuT" secondAttribute="centerY" id="ObS-t6-WOY"/>
+                                    <constraint firstItem="w07-ga-INR" firstAttribute="centerX" secondItem="A9f-LQ-NuT" secondAttribute="centerX" id="X9K-ui-RD1"/>
                                     <constraint firstAttribute="width" secondItem="A9f-LQ-NuT" secondAttribute="height" multiplier="1:1" id="fcJ-Ou-3co"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rA2-si-3CY">
-                                <rect key="frame" x="0.0" y="449" width="375" height="218"/>
+                                <rect key="frame" x="0.0" y="411" width="375" height="256"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="0.0" colorSpace="calibratedRGB"/>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Legend" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WID-NH-eag">
-                                <rect key="frame" x="20" y="411" width="335" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="vFw-cE-XTh"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="rA2-si-3CY" secondAttribute="trailing" id="9NK-sg-JYp"/>
-                            <constraint firstItem="rA2-si-3CY" firstAttribute="top" secondItem="WID-NH-eag" secondAttribute="bottom" constant="8" id="DaG-VA-JRB"/>
                             <constraint firstItem="rA2-si-3CY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MXb-oE-Lcw"/>
                             <constraint firstItem="A9f-LQ-NuT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Q1z-vu-o1Z"/>
-                            <constraint firstItem="WID-NH-eag" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="R3o-xQ-fIv"/>
-                            <constraint firstAttribute="trailing" secondItem="WID-NH-eag" secondAttribute="trailing" constant="20" id="Taa-6I-qEg"/>
                             <constraint firstItem="A9f-LQ-NuT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UZz-Rl-0p1"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rA2-si-3CY" secondAttribute="bottom" id="dXD-XZ-gz6"/>
                             <constraint firstAttribute="trailing" secondItem="A9f-LQ-NuT" secondAttribute="trailing" id="f36-7X-FoA"/>
-                            <constraint firstItem="WID-NH-eag" firstAttribute="top" secondItem="A9f-LQ-NuT" secondAttribute="bottom" constant="8" id="svG-6y-75d"/>
+                            <constraint firstItem="rA2-si-3CY" firstAttribute="top" secondItem="A9f-LQ-NuT" secondAttribute="bottom" constant="8" id="jTD-xG-lTa"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="w07-ga-INR" id="qET-XU-6J1"/>
                         <outlet property="legendTableView" destination="rA2-si-3CY" id="BhJ-95-8ib"/>
                         <outlet property="radarView" destination="A9f-LQ-NuT" id="Zts-sM-WhO"/>
+                        <outlet property="reloadButton" destination="FZS-hW-iQ1" id="GYp-ZW-NGB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -68,4 +79,7 @@
             <point key="canvasLocation" x="133.59999999999999" y="137.18140929535232"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="reload" width="12" height="14"/>
+    </resources>
 </document>

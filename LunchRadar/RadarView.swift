@@ -18,14 +18,10 @@ class RadarView: UIView {
         }
     }
     
-    var circleSizeFactor: CGFloat = 0.5
-    var arrowSizeFactor: CGFloat = 0.4
+    var circleSizeFactor: CGFloat = 0.4
+    var arrowSizeFactor: CGFloat = 0.75
     
-    var circleColor: UIColor = UIColor.lightGray {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
+    var circleColor: UIColor = UIColor(colorLiteralRed: 0.9, green: 0.9, blue: 0.9, alpha: 0.1)
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -45,7 +41,9 @@ class RadarView: UIView {
         
         let circleCenter = CGPoint(x: minBoxDimension / 2.0, y: minBoxDimension / 2.0)
         
-        for arrow in arrows {
+        let arrowsReverse = arrows.reversed()
+        
+        for arrow in arrowsReverse {
             
             let color: UIColor = (arrow.color != nil) ? arrow.color! : UIColor.lightGray
             
@@ -55,14 +53,14 @@ class RadarView: UIView {
     
     func drawArrow(_ arrow: Arrow, onCircleWithRadius radius: CGFloat, withCenter center: CGPoint, andColor color: UIColor) {
         
-        guard let bearing = arrow.bearing else {
-            print("Arrow contains no bearing data")
+        guard let relativeDirection = arrow.relativeDirection else {
+            print("Arrow contains no direction data")
             return
         }
         
         // MARK: Draw arrow
-        let startRadians = CGFloat((bearing - 45.0).degreesToRadians)
-        let endRadians = CGFloat((bearing + 45.0).degreesToRadians)
+        let startRadians = CGFloat((relativeDirection - 45.0).degreesToRadians)
+        let endRadians = CGFloat((relativeDirection + 45.0).degreesToRadians)
         
         let outline = UIBezierPath()
         
@@ -78,7 +76,7 @@ class RadarView: UIView {
         
         outline.addArc(withCenter: center, radius: radius, startAngle: startRadians, endAngle: endRadians, clockwise: true)
         
-        let arrowPointRadians = CGFloat(bearing.degreesToRadians)
+        let arrowPointRadians = CGFloat(relativeDirection.degreesToRadians)
         
         var arrowPoint = CGPoint()
         arrowPoint.x = center.x + (radius + (radius * arrowSizeFactor)) * cos(arrowPointRadians)
