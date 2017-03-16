@@ -13,6 +13,7 @@ class ViewController: UIViewController {
 
     var locationManager: LocationManager = LocationManager()
     var yqlRouter: YQLRouter = YQLRouter()
+    var lastHeading: Double?
     
     var arrows: [Arrow] = []
     
@@ -28,6 +29,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var whatsForLunchButton: UIButton!
+    
+    var foodTypeSelectView: FoodTypeSelectView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +50,20 @@ class ViewController: UIViewController {
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         yqlRouter.forceUpdate = true
+        if let location = locationManager.currentLocation {
+            yqlRouter.queryRestaurants(forCoordinates: location.coordinate)
+        }
+        
+    }
+    
+    @IBAction func onWhatsForLunchButtonTapped(_ sender: UIButton) {
+        
+        if foodTypeSelectView == nil {
+            let nib = Bundle.main.loadNibNamed(FoodTypeSelectView.nibName, owner: self, options: nil)?.first
+            foodTypeSelectView = nib as? FoodTypeSelectView
+            foodTypeSelectView?.delegate = self
+            view.addSubview(foodTypeSelectView!)
+        }
     }
     
 }
@@ -63,12 +81,21 @@ extension ViewController: LocationDelegate {
             return arrow
         })
         
+        if let lastHeading = lastHeading {
+            updateArrowsWithHeading(lastHeading)
+        }
+        
         // Note: YQLRouter will refuse to make a network call unless 10 seconds has elapsed.
         yqlRouter.queryRestaurants(forCoordinates: currentLocation.coordinate)
     }
     
     func didUpdateHeading(_ heading: Double) {
         
+        lastHeading = heading
+        updateArrowsWithHeading(heading)
+    }
+    
+    func updateArrowsWithHeading(_ heading: Double) {
         arrows = arrows.map { (arrow) -> Arrow in
             
             if let bearing = arrow.bearing {
@@ -145,6 +172,9 @@ extension ViewController: YQLDelegate {
         }
         
         self.arrows = arrows
+        if let lastHeading = lastHeading {
+            updateArrowsWithHeading(lastHeading)
+        }
     }
 }
 
@@ -187,5 +217,28 @@ extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60.0
+    }
+}
+
+extension ViewController: FoodSelectProtocol {
+    
+    func didSelectFoodType(foodName: String) {
+        
+        whatsForLunchButton.setTitle(foodName, for: .normal)
+        
+        reloadButton.isHidden = true
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        
+        yqlRouter.searchTerm = "\(foodName) restaurants"
+        yqlRouter.forceUpdate = true
+        if let location = locationManager.currentLocation {
+            yqlRouter.queryRestaurants(forCoordinates: location.coordinate)
+        }
+        
+        if let foodTypeSelectView = foodTypeSelectView {
+            foodTypeSelectView.removeFromSuperview()
+            self.foodTypeSelectView = nil
+        }
     }
 }

@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9f-LQ-NuT" customClass="RadarView" customModule="LunchRadar" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="375"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="375"/>
                                 <subviews>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZS-hW-iQ1">
                                         <rect key="frame" x="157" y="157.5" width="60" height="60"/>
@@ -51,20 +52,36 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rA2-si-3CY">
-                                <rect key="frame" x="0.0" y="411" width="375" height="256"/>
+                                <rect key="frame" x="0.0" y="447" width="375" height="220"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="0.0" colorSpace="calibratedRGB"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mah-rs-SCB">
+                                <rect key="frame" x="56" y="28" width="263" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="WZL-hW-hhC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="What's for lunch?">
+                                    <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onWhatsForLunchButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wBy-NG-W3v"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="mah-rs-SCB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="55o-7T-Osq"/>
                             <constraint firstAttribute="trailing" secondItem="rA2-si-3CY" secondAttribute="trailing" id="9NK-sg-JYp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mah-rs-SCB" secondAttribute="trailing" constant="40" id="FgP-Zs-Z4a"/>
                             <constraint firstItem="rA2-si-3CY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MXb-oE-Lcw"/>
-                            <constraint firstItem="A9f-LQ-NuT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Q1z-vu-o1Z"/>
                             <constraint firstItem="A9f-LQ-NuT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UZz-Rl-0p1"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rA2-si-3CY" secondAttribute="bottom" id="dXD-XZ-gz6"/>
                             <constraint firstAttribute="trailing" secondItem="A9f-LQ-NuT" secondAttribute="trailing" id="f36-7X-FoA"/>
                             <constraint firstItem="rA2-si-3CY" firstAttribute="top" secondItem="A9f-LQ-NuT" secondAttribute="bottom" constant="8" id="jTD-xG-lTa"/>
+                            <constraint firstItem="mah-rs-SCB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="40" id="r7r-6x-yJQ"/>
+                            <constraint firstItem="A9f-LQ-NuT" firstAttribute="top" secondItem="mah-rs-SCB" secondAttribute="bottom" id="tpl-ui-pCn"/>
                         </constraints>
                     </view>
                     <connections>
@@ -72,6 +89,7 @@
                         <outlet property="legendTableView" destination="rA2-si-3CY" id="BhJ-95-8ib"/>
                         <outlet property="radarView" destination="A9f-LQ-NuT" id="Zts-sM-WhO"/>
                         <outlet property="reloadButton" destination="FZS-hW-iQ1" id="GYp-ZW-NGB"/>
+                        <outlet property="whatsForLunchButton" destination="mah-rs-SCB" id="lVt-92-qki"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -18,6 +18,10 @@
 		04E30E281E76362E00748689 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E30E271E76362E00748689 /* LocationManager.swift */; };
 		04E30E2D1E7975E600748689 /* LegendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E30E2B1E7975E600748689 /* LegendTableViewCell.swift */; };
 		04E30E2E1E7975E600748689 /* LegendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E30E2C1E7975E600748689 /* LegendTableViewCell.xib */; };
+		AF2C8E981E79FEA500D9A964 /* FoodTypeSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF2C8E971E79FEA500D9A964 /* FoodTypeSelectView.xib */; };
+		AF2C8E9B1E79FEFD00D9A964 /* FoodTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2C8E991E79FEFD00D9A964 /* FoodTypeCollectionViewCell.swift */; };
+		AF2C8E9C1E79FEFD00D9A964 /* FoodTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF2C8E9A1E79FEFD00D9A964 /* FoodTypeCollectionViewCell.xib */; };
+		AF2C8E9E1E79FFC900D9A964 /* FoodTypeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2C8E9D1E79FFC900D9A964 /* FoodTypeSelectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		04E30E271E76362E00748689 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		04E30E2B1E7975E600748689 /* LegendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegendTableViewCell.swift; sourceTree = "<group>"; };
 		04E30E2C1E7975E600748689 /* LegendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LegendTableViewCell.xib; sourceTree = "<group>"; };
+		AF2C8E971E79FEA500D9A964 /* FoodTypeSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodTypeSelectView.xib; sourceTree = "<group>"; };
+		AF2C8E991E79FEFD00D9A964 /* FoodTypeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		AF2C8E9A1E79FEFD00D9A964 /* FoodTypeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodTypeCollectionViewCell.xib; sourceTree = "<group>"; };
+		AF2C8E9D1E79FFC900D9A964 /* FoodTypeSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTypeSelectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +81,10 @@
 				04C7CB671E7603E1003004EB /* LunchRadarModels.swift */,
 				04C7CB691E7625A7003004EB /* YQLRouter.swift */,
 				04E30E2B1E7975E600748689 /* LegendTableViewCell.swift */,
+				AF2C8E9D1E79FFC900D9A964 /* FoodTypeSelectView.swift */,
+				AF2C8E971E79FEA500D9A964 /* FoodTypeSelectView.xib */,
+				AF2C8E991E79FEFD00D9A964 /* FoodTypeCollectionViewCell.swift */,
+				AF2C8E9A1E79FEFD00D9A964 /* FoodTypeCollectionViewCell.xib */,
 				04E30E2C1E7975E600748689 /* LegendTableViewCell.xib */,
 				04C7CB571E760345003004EB /* Main.storyboard */,
 				04C7CB5A1E760345003004EB /* Assets.xcassets */,
@@ -142,8 +154,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF2C8E9C1E79FEFD00D9A964 /* FoodTypeCollectionViewCell.xib in Resources */,
 				04C7CB5E1E760345003004EB /* LaunchScreen.storyboard in Resources */,
 				04C7CB5B1E760345003004EB /* Assets.xcassets in Resources */,
+				AF2C8E981E79FEA500D9A964 /* FoodTypeSelectView.xib in Resources */,
 				04E30E2E1E7975E600748689 /* LegendTableViewCell.xib in Resources */,
 				04C7CB591E760345003004EB /* Main.storyboard in Resources */,
 			);
@@ -156,8 +170,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF2C8E9B1E79FEFD00D9A964 /* FoodTypeCollectionViewCell.swift in Sources */,
 				04C7CB561E760345003004EB /* ViewController.swift in Sources */,
 				04C7CB681E7603E1003004EB /* LunchRadarModels.swift in Sources */,
+				AF2C8E9E1E79FFC900D9A964 /* FoodTypeSelectView.swift in Sources */,
 				04E30E281E76362E00748689 /* LocationManager.swift in Sources */,
 				04C7CB661E760361003004EB /* RadarView.swift in Sources */,
 				04C7CB541E760345003004EB /* AppDelegate.swift in Sources */,
