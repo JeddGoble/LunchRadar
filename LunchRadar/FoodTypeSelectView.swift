@@ -68,7 +68,7 @@ extension FoodTypeSelectView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: 140.0, height: 140.0)
+        return CGSize(width: 120.0, height: 120.0)
     }
     
 }

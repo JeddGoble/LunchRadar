@@ -62,6 +62,7 @@ class ViewController: UIViewController {
             let nib = Bundle.main.loadNibNamed(FoodTypeSelectView.nibName, owner: self, options: nil)?.first
             foodTypeSelectView = nib as? FoodTypeSelectView
             foodTypeSelectView?.delegate = self
+            foodTypeSelectView?.frame = view.frame
             view.addSubview(foodTypeSelectView!)
         }
     }
