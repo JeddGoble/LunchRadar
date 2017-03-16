@@ -27,7 +27,7 @@ class YQLRouter: NSObject {
         let currentTime = Date().timeIntervalSinceReferenceDate
         let timeElapsed = currentTime - lastNetworkCallTime
         
-        guard timeElapsed > 10.0 || forceUpdate else {
+        guard timeElapsed > 20.0 || forceUpdate else {
             print("Not enough time has elapsed to make another network call")
             return
         }
